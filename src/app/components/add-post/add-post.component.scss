@@ -1,0 +1,37 @@
+$border-color: #b8b8b879;
+$box-radius: 5px;
+$box-shadow: 3px 3px 5px #00000079, -3px 0 5px #00000079;
+
+@mixin avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.form-add {
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid $border-color;
+  border-radius: $box-radius;
+  box-shadow: $box-shadow;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  & img {
+    @include avatar;
+  }
+
+  & .input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid $border-color;
+    color: #acacac;
+    font-weight: 300;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    padding: 5px 10px;
+    margin: 0px 15px;
+  }
+}

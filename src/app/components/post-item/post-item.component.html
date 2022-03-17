@@ -1,0 +1,54 @@
+<div class="post-container">
+  <div class="header">
+    <div class="user">
+      <div class="user-wrapper">
+        <div class="avatar">
+          <img src="./assets/img/chi-hang-xom.jpg" alt="photoUrl" />
+        </div>
+        <div class="user-title">
+          <h4 class="display-name">Trung Nguyên</h4>
+          <span class="time-left">3 hour</span>
+        </div>
+      </div>
+      <div class="option">
+        <button mat-icon-button [matMenuTriggerFor]="userOptionMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #userOptionMenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Setting</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications</mat-icon>
+            <span>Notifycations</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Sign out</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <div class="post-title">Củ chuối</div>
+  </div>
+  <div class="body">
+    <img src="./assets/img/leona.jpg" alt="test-post" />
+  </div>
+  <div class="footer">
+    <div class="box-option">
+      <button mat-icon-button class="material-icons-outlined">
+        <mat-icon>favorite_outline</mat-icon>
+        <span class="count">33</span>
+      </button>
+      <button mat-icon-button class="material-icons-outlined">
+        <mat-icon>comment_outline</mat-icon>
+        <span class="count">9</span>
+      </button>
+      <button mat-icon-button class="material-icons-outlined">
+        <mat-icon>share_outline</mat-icon>
+        <span class="count">4</span>
+      </button>
+    </div>
+  </div>
+</div>

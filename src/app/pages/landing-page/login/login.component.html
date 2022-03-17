@@ -1,0 +1,57 @@
+<div class="login-container">
+  <h1>Sign in Eyebook</h1>
+  <img src="./assets/eyebook-logo.png" alt="eyebook" />
+  <form action="" (ngSubmit)="onSubmit()" [formGroup]="rfSignIn">
+    <mat-form-field appearance="outline">
+      <mat-label>Username / Email</mat-label>
+      <input matInput formControlName="emailOrUsername" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          !rfSignIn.get('emailOrUsername')?.valid &&
+          rfSignIn.get('emailOrUsername')?.touched
+        "
+        >Username / Email is required</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          !rfSignIn.get('password')?.valid && rfSignIn.get('password')?.touched
+        "
+        >Password is required</mat-error
+      >
+    </mat-form-field>
+    <div class="option">
+      <p>
+        Do not have an account?
+        <a [routerLink]="['/register']">Register now</a>
+      </p>
+      <div class="submit-btn-wrapper">
+        <button
+          mat-raised-button
+          type="submit"
+          [disabled]="!rfSignIn.valid"
+          color="primary"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

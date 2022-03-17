@@ -1,0 +1,69 @@
+@mixin box {
+  border: 1px solid #b8b8b879;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #00000079, -3px 0 5px #00000079;
+}
+
+@mixin flex($direction: row, $aic: center, $jtf: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $aic;
+  justify-content: $jtf;
+}
+
+.post-container {
+  margin-top: 2rem;
+  padding: 10px;
+  @include box();
+  @include flex(column, flex-start, flex-start);
+
+  & .header {
+    width: 100%;
+    @include flex(column, flex-start, space-between);
+
+    & .user {
+      width: 100%;
+      @include flex(row, center, space-between);
+
+      & .user-wrapper {
+        @include flex();
+
+        & .avatar {
+          @include flex();
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+          overflow: hidden;
+
+          & img {
+            width: 100%;
+          }
+        }
+
+        & .user-title {
+          margin-left: 10px;
+          @include flex(column, flex-start, flex-start);
+
+          & .display-name {
+            font-weight: 500;
+          }
+
+          & .time-left {
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: #9b9b9b;
+          }
+        }
+      }
+    }
+
+    & .title {
+      font-weight: 400;
+      padding: 10px 0;
+    }
+  }
+
+  & .body {
+    width: 100%;
+  }
+}

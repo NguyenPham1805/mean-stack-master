@@ -1,0 +1,78 @@
+<div class="register-container">
+  <h1>Register Eyebook</h1>
+  <img src="./assets/eyebook-logo.png" alt="eyebook" />
+  <form (ngSubmit)="onSubmit()" [formGroup]="rgForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          !rgForm.get('username')?.valid && rgForm.get('username')?.touched
+        "
+        >Username invalid</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <mat-error
+        *ngIf="
+          !rgForm.get('password')?.valid && rgForm.get('password')?.touched
+        "
+        >Password in valid</mat-error
+      >
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" autocomplete="off" type="email" />
+      <mat-error
+        *ngIf="!rgForm.get('email')?.valid && rgForm.get('email')?.touched"
+        >Email invalid</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Display name</mat-label>
+      <input matInput formControlName="displayName" autocomplete="off" />
+      <mat-error
+        *ngIf="
+          !rgForm.get('displayName')?.valid &&
+          rgForm.get('displayName')?.touched
+        "
+        >Display name invalid</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <div class="option">
+      <p>
+        Already have an account
+        <a [routerLink]="['/login']">Sign in now</a>
+      </p>
+      <div class="submit-btn-wrapper">
+        <button
+          mat-raised-button
+          type="submit"
+          [disabled]="!rgForm.valid"
+          color="primary"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
