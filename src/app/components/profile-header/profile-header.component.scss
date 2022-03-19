@@ -1,0 +1,86 @@
+@mixin box {
+  border: 1px solid #b8b8b879;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #00000079, -3px 0 5px #00000079;
+}
+
+@mixin flex($direction: row, $aic: center, $jtf: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $aic;
+  justify-content: $jtf;
+}
+
+.info {
+  width: 100%;
+  padding: 10px;
+  margin-top: 2rem;
+  @include box();
+
+  & .header {
+    width: 100%;
+    padding-bottom: 40%;
+    background: linear-gradient(to top, #2c131f, #00000000),
+      url("../../../assets/img/diana.jpg");
+    background-size: cover;
+    position: relative;
+
+    & .avatar {
+      @include flex();
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      border: 3px solid #0a1c6e;
+      border-radius: 50%;
+      overflow: hidden;
+      transform: translate(-50%, 50%);
+
+      & img {
+        width: 100%;
+      }
+    }
+
+    & button {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+    }
+  }
+
+  & .content {
+    @include flex(column, center, flex-start);
+    padding-top: 80px;
+
+    mat-list-item {
+      height: 2rem;
+    }
+
+    mat-icon {
+      margin-right: 5px;
+    }
+
+    .name {
+      margin-bottom: 1rem;
+
+      h1 {
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+
+      p {
+        font-weight: 200;
+      }
+    }
+
+    .hobby {
+      @include flex();
+      flex-wrap: wrap;
+
+      button {
+        margin: 5px 10px;
+      }
+    }
+  }
+}

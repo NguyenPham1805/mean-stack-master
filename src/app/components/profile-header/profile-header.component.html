@@ -1,0 +1,30 @@
+<div class="info">
+  <div class="header">
+    <div class="avatar">
+      <img src="./assets/img/chi-hang-xom.jpg" alt="avatar" />
+    </div>
+    <button mat-icon-button>
+      <mat-icon class="material-icons-outlined">photo_camera</mat-icon>
+    </button>
+  </div>
+
+  <div class="content">
+    <div class="name">
+      <h1>trung nguyen</h1>
+      <p>cuộc sống là những cú lừa</p>
+    </div>
+    <mat-list>
+      <mat-list-item *ngFor="let item of info">
+        <mat-icon>
+          {{ item.icon }}
+        </mat-icon>
+        <span>{{ item.content }}</span>
+      </mat-list-item>
+    </mat-list>
+    <div class="hobby">
+      <button mat-stroked-button *ngFor="let hobby of hobbys">
+        {{ hobby }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -27,8 +27,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.scrollSubscription$ = fromEvent(window, 'scroll').subscribe(() => {
       this.scrollNavbar();
-      console.log(this.navbarChage);
-      console.log(window);
     });
   }
 

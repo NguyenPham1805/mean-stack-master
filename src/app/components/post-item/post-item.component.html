@@ -16,39 +16,43 @@
         </button>
         <mat-menu #userOptionMenu="matMenu">
           <button mat-menu-item>
-            <mat-icon>settings</mat-icon>
-            <span>Setting</span>
+            <mat-icon class="material-icons-outlined">turned_in_not</mat-icon>
+            <span>Save post</span>
           </button>
           <button mat-menu-item>
-            <mat-icon>notifications</mat-icon>
-            <span>Notifycations</span>
+            <mat-icon class="material-icons-outlined">notifications</mat-icon>
+            <span>Turn off notification for this post</span>
           </button>
           <button mat-menu-item>
-            <mat-icon>logout</mat-icon>
-            <span>Sign out</span>
+            <mat-icon class="material-icons-outlined">announcement</mat-icon>
+            <span>Report this post</span>
           </button>
         </mat-menu>
       </div>
     </div>
-    <div class="post-title">Củ chuối</div>
+    <div class="title">Củ chuối</div>
   </div>
   <div class="body">
+    <div class="content-text"></div>
     <img src="./assets/img/leona.jpg" alt="test-post" />
   </div>
   <div class="footer">
-    <div class="box-option">
-      <button mat-icon-button class="material-icons-outlined">
-        <mat-icon>favorite_outline</mat-icon>
-        <span class="count">33</span>
-      </button>
-      <button mat-icon-button class="material-icons-outlined">
-        <mat-icon>comment_outline</mat-icon>
-        <span class="count">9</span>
-      </button>
-      <button mat-icon-button class="material-icons-outlined">
-        <mat-icon>share_outline</mat-icon>
-        <span class="count">4</span>
-      </button>
-    </div>
+    <button
+      mat-stroked-button
+      (click)="handleToggleLike()"
+      [color]="likeCheck && 'warn'"
+      [class.like-active]="likeCheck"
+    >
+      <mat-icon>favorite{{ !likeCheck && "_outline" }}</mat-icon>
+      <span class="count">{{ likeCount }} Likes</span>
+    </button>
+    <button mat-stroked-button>
+      <mat-icon>comment_outline</mat-icon>
+      <span class="count">9 Comments</span>
+    </button>
+    <button mat-stroked-button>
+      <mat-icon>share_outline</mat-icon>
+      <span class="count">4 Shares</span>
+    </button>
   </div>
 </div>

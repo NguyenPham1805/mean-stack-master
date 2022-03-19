@@ -1,0 +1,138 @@
+$bg-skeleton: #a0a0a0;
+
+@mixin box {
+  border: 1px solid #b8b8b879;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #00000079, -3px 0 5px #00000079;
+}
+
+@mixin flex($direction: row, $aic: center, $jtf: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $aic;
+  justify-content: $jtf;
+}
+
+.post-skeleton {
+  margin-top: 2rem;
+  padding: 10px;
+  @include box();
+  @include flex(column, flex-start, flex-start);
+
+  & .header {
+    @include flex(column, flex-start, space-between);
+    width: 100%;
+    border-bottom: 1px solid #b8b8b879;
+    padding-bottom: 10px;
+
+    & .user {
+      @include flex(row, center, flex-start);
+      width: 100%;
+
+      & .avatar {
+        width: 45px;
+        height: 40px;
+        border-radius: 20px;
+        background: $bg-skeleton;
+      }
+
+      & .user-title {
+        width: 100%;
+        @include flex(column, flex-start, space-between);
+        margin-left: 10px;
+
+        & .display-name {
+          width: 45%;
+          height: 1rem;
+          background: $bg-skeleton;
+          border-radius: 5px;
+          margin-bottom: 5px;
+        }
+
+        & .time-left {
+          width: 20%;
+          height: 0.8rem;
+          background: $bg-skeleton;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    & .title {
+      width: 100%;
+      height: 1rem;
+      margin-top: 10px;
+      background: $bg-skeleton;
+      border-radius: 5px;
+
+      &.end {
+        width: 40%;
+      }
+    }
+  }
+
+  & .body {
+    width: 100%;
+    padding-bottom: 50%;
+    border-bottom: 1px solid #b8b8b879;
+    position: relative;
+
+    & .content {
+      border-radius: 5px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      & svg {
+        width: 3.75em;
+        transform-origin: center;
+        animation: rotate 2s linear infinite;
+      }
+
+      & circle {
+        fill: none;
+        stroke: $bg-skeleton;
+        stroke-width: 2;
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+        animation: dash 1.5s ease-in-out infinite;
+      }
+    }
+  }
+
+  & .footer {
+    width: 100%;
+    height: 2rem;
+    padding: 20px 5% 10px;
+    @include flex(row, center, space-between);
+
+    & .button {
+      width: 100px;
+      border-radius: 5px;
+      height: 1.5rem;
+      background: $bg-skeleton;
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}

@@ -58,12 +58,33 @@
     }
 
     & .title {
-      font-weight: 400;
+      font-weight: 200;
       padding: 10px 0;
     }
   }
 
   & .body {
     width: 100%;
+    @include flex();
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  & .footer {
+    width: 100%;
+    padding: 20px 5% 0;
+    @include flex(row, center, space-between);
+
+    & .count {
+      margin-left: 5px;
+    }
+  }
+}
+
+::ng-deep {
+  & .like-active .mat-icon {
+    color: #ec3131;
   }
 }

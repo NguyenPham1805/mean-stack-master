@@ -14,3 +14,9 @@ export interface RegisterUser {
   photoUrl?: string;
   email: string;
 }
+
+export interface UserState {
+  user: CurrentUser | null;
+  status: 'idle' | 'loading' | 'error';
+  error?: string;
+}

@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { LandingPageModule } from './pages/landing-page/landing-page.module';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,26 +1,31 @@
 <nav class="navbar" [class.scrolltop]="navbarChage">
   <div class="menu">
-    <a [routerLink]="['/']" class="brand" routerLinkActive="selected"
-      ><img src="./assets/img/eyebook-logo.png" alt=""
-    /></a>
+    <a [routerLink]="['/']" class="brand">
+      <img src="./assets/img/eyebook-logo.png" alt="" />
+    </a>
     <ul class="nav-list">
       <li class="nav-item">
-        <a [routerLink]="['post']" routerLinkActive="selected" class="nav-link"
-          >home</a
-        >
+        <a [routerLink]="['post']" routerLinkActive="selected" class="nav-link">
+          home
+        </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['watch']" routerLinkActive="selected" class="nav-link"
-          >watch</a
+        <a
+          [routerLink]="['watch']"
+          routerLinkActive="selected"
+          class="nav-link"
         >
+          watch
+        </a>
       </li>
       <li class="nav-item">
         <a
           [routerLink]="['profile', 1]"
           routerLinkActive="selected"
           class="nav-link"
-          >profile</a
         >
+          profile
+        </a>
       </li>
     </ul>
   </div>
@@ -57,7 +62,7 @@
         <span>Setting</span>
       </button>
       <button mat-menu-item>
-        <mat-icon>notifications</mat-icon>
+        <mat-icon matBadge="9">notifications</mat-icon>
         <span>Notifycations</span>
       </button>
       <button mat-menu-item>

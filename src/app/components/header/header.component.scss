@@ -48,12 +48,10 @@
           letter-spacing: 1px;
           font-size: 1.1rem;
 
+          &.selected,
           &:hover {
             color: #f73c6b;
-          }
-
-          &.selected {
-            color: #f73c6b;
+            font-weight: 600;
           }
         }
       }
