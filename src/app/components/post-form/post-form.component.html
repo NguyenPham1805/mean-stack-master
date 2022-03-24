@@ -1,0 +1,64 @@
+<div class="form-container">
+  <div class="header">
+    <div class="circle">
+      <img
+        *ngIf="imageImageApiUrl + currentUser.photoUrl; else avatar"
+        [src]="imageImageApiUrl + currentUser.photoUrl"
+        [alt]="currentUser.displayName"
+      />
+      <ng-template #avatar>
+        <h1>{{ currentUser.displayName.charAt(0) }}</h1>
+      </ng-template>
+    </div>
+    <div class="name">
+      <h4>{{ currentUser.displayName }}</h4>
+    </div>
+    <div class="closebtn" (click)="onClose.emit()">
+      <button mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="body">
+    <form
+      (ngSubmit)="post ? onSubmit(postForm) : handleUpdatePost(postForm)"
+      #postForm="ngForm"
+    >
+      <input
+        class="input-title"
+        type="text"
+        name="caption"
+        [value]="post?.title || ''"
+        ngModel
+        placeholder="What's on your mind?"
+        autocomplete="off"
+        required="true"
+      />
+      <input
+        class="input-file"
+        type="file"
+        name="image"
+        ngModel
+        (change)="handleChageFile($event.target)"
+        #fileUpload
+      />
+      <div class="preview-image" (click)="fileUpload.click()">
+        <img [src]="imageImageApiUrl + post?.image || defaulImg" />
+      </div>
+      <div class="footer">
+        <button mat-raised-button (click)="onClose.emit()" type="button">
+          cancel
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!postForm.valid"
+          type="submit"
+        >
+          {{ post ? "update" : "create" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="overlay"></div>

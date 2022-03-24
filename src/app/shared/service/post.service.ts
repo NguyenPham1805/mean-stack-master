@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Post, PostCreate } from '../types/post.interface';
+import { Post } from '../types/post.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +10,14 @@ import { Post, PostCreate } from '../types/post.interface';
 export class PostService {
   constructor(private readonly http: HttpClient) {}
 
-  public getPosts(accessToken: string) {
-    return this.http.get<Post>(`${environment.eyebookApiUrl}/post`, {
+  public getPosts(accessToken: string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${environment.eyebookApiUrl}/post`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
   }
 
-  public getPostsUser(accessToken: string, userId: string) {
-    return this.http.get<Post>(
+  public getPostsUser(accessToken: string, userId: string): Observable<Post[]> {
+    return this.http.get<Post[]>(
       `${environment.eyebookApiUrl}/post/user/${userId}`,
       {
         headers: { Authorization: `Bearer ${accessToken}` },
@@ -24,35 +25,23 @@ export class PostService {
     );
   }
 
-  public getPost(accessToken: string, postId: string) {
+  public getPost(accessToken: string, postId: string): Observable<Post> {
     return this.http.get<Post>(`${environment.eyebookApiUrl}/post/${postId}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
   }
 
-  public createPost(accessToken: string, post: PostCreate) {
+  public createPost(accessToken: string, post: any) {
     return this.http.post(`${environment.eyebookApiUrl}/post/create`, post, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
-      },
+      headers: { Authorization: `Bearer ${accessToken}` },
     });
   }
 
-  public updatePost(
-    accessToken: string,
-    postId: string,
-    postUpdate: PostCreate
-  ) {
+  public updatePost(accessToken: string, postId: string, postUpdate: any) {
     return this.http.post(
       `${environment.eyebookApiUrl}/post/update/${postId}`,
       postUpdate,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-      }
+      { headers: { Authorization: `Bearer ${accessToken}` } }
     );
   }
 

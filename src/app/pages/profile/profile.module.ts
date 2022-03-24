@@ -8,6 +8,8 @@ import { ProfileHeaderComponent } from 'src/app/components/profile-header/profil
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { PostSkeletonModule } from 'src/app/components/post-skeleton/post-skeleton.module';
+import { PostFormModule } from 'src/app/components/post-form/post-form.module';
 
 @NgModule({
   declarations: [ProfileComponent, ProfileHeaderComponent],
@@ -15,10 +17,12 @@ import { MatListModule } from '@angular/material/list';
     CommonModule,
     ProfileRoutingModule,
     AddPostModule,
+    PostSkeletonModule,
     PostItemModule,
     MatIconModule,
     MatButtonModule,
     MatListModule,
+    PostFormModule,
   ],
 })
 export class ProfileModule {}

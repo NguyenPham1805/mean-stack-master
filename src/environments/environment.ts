@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   eyebookApiUrl: 'http://localhost:5000/api/v1',
+  eyePostImageApiUrl: 'http://localhost:5000/post-images/',
 };
 
 /*

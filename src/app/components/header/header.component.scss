@@ -52,6 +52,7 @@
           &:hover {
             color: #f73c6b;
             font-weight: 600;
+            text-shadow: 3px 3px 10px #7a0aedc4, -3px -3px 10px #7a0aedc4;
           }
         }
       }
@@ -128,10 +129,26 @@
       align-items: center;
       cursor: pointer;
 
-      & img {
+      .circle {
         width: 40px;
         height: 40px;
         border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #dadada;
+
+        img {
+          width: 100%;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+          font-weight: 400;
+          text-transform: uppercase;
+          color: #cb0560;
+        }
       }
     }
   }

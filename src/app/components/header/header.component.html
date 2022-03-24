@@ -11,15 +11,6 @@
       </li>
       <li class="nav-item">
         <a
-          [routerLink]="['watch']"
-          routerLinkActive="selected"
-          class="nav-link"
-        >
-          watch
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
           [routerLink]="['profile', 1]"
           routerLinkActive="selected"
           class="nav-link"
@@ -51,10 +42,35 @@
           <span></span>
         </div>
       </form>
-      <div mat-icon-button [matMenuTriggerFor]="menu" class="avatar">
-        <img src="./assets/img/chi-hang-xom.jpg" alt="" />
+      <div
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        class="avatar"
+        *ngIf="currentUser; else loginBtn"
+      >
+        <div class="circle">
+          <img
+            *ngIf="currentUser.photoUrl; else avatar"
+            [src]="currentUser.photoUrl"
+            [alt]="currentUser.displayName"
+          />
+          <ng-template #avatar>
+            <h1>{{ currentUser.displayName.charAt(0) }}</h1>
+          </ng-template>
+        </div>
         <mat-icon>arrow_drop_down</mat-icon>
       </div>
+      <ng-template #loginBtn>
+        <button mat-icon-button [matMenuTriggerFor]="signInMenu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #signInMenu="matMenu">
+          <a mat-menu-item [routerLink]="['/login']">
+            <mat-icon>login</mat-icon>
+            <span>Sign in</span>
+          </a>
+        </mat-menu>
+      </ng-template>
     </div>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
@@ -65,7 +81,7 @@
         <mat-icon matBadge="9">notifications</mat-icon>
         <span>Notifycations</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="handleSignOut()">
         <mat-icon>logout</mat-icon>
         <span>Sign out</span>
       </button>

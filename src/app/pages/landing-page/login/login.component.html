@@ -1,7 +1,7 @@
 <div class="login-container">
   <h1>Sign in Eyebook</h1>
   <img src="./assets/img/eyebook-logo.png" alt="eyebook" />
-  <form action="" (ngSubmit)="onSubmit()" [formGroup]="rfSignIn">
+  <form (ngSubmit)="onSubmit()" [formGroup]="rfSignIn">
     <mat-form-field appearance="outline">
       <mat-label>Username / Email</mat-label>
       <input matInput formControlName="emailOrUsername" autocomplete="off" />
@@ -37,6 +37,11 @@
         >Password is required</mat-error
       >
     </mat-form-field>
+    <ul class="errors" *ngIf="errorsSignIn$ | async">
+      <li class="error-item" *ngFor="let error of errorsSignIn$ | async">
+        {{ error }}
+      </li>
+    </ul>
     <div class="option">
       <p>
         Do not have an account?
@@ -46,9 +51,12 @@
         <button
           mat-raised-button
           type="submit"
-          [disabled]="!rfSignIn.valid"
+          [disabled]="!rfSignIn.valid || (isSubmit$ | async) === 'loading'"
           color="primary"
         >
+          <mat-icon *ngIf="(isSubmit$ | async) === 'loading'">
+            loop_outline
+          </mat-icon>
           Submit
         </button>
       </div>

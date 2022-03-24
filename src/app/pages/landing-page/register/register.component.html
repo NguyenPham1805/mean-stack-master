@@ -32,6 +32,7 @@
         (click)="hide = !hide"
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide"
+        type="button"
       >
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
@@ -58,6 +59,11 @@
       >
     </mat-form-field>
     <br />
+    <ul class="errors" *ngIf="errorsSignIn$ | async">
+      <li class="error-item" *ngFor="let error of errorsSignIn$ | async">
+        {{ error }}
+      </li>
+    </ul>
     <div class="option">
       <p>
         Already have an account
@@ -67,10 +73,13 @@
         <button
           mat-raised-button
           type="submit"
-          [disabled]="!rgForm.valid"
+          [disabled]="!rgForm.valid || (isSubmit$ | async) === 'loading'"
           color="primary"
         >
-          Register
+          <mat-icon *ngIf="(isSubmit$ | async) === 'loading'">
+            loop_outline
+          </mat-icon>
+          Submit
         </button>
       </div>
     </div>

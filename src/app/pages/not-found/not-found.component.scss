@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Nanum+Gothic&display=swap");
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background: url(../../../assets/img/p404.png), #490424;
+
+  h1,
+  h3 {
+    text-align: center;
+  }
+
+  .code {
+    font-family: "Montserrat";
+    font-size: 7rem;
+    font-weight: 200;
+  }
+
+  .return {
+    text-align: center;
+    text-decoration: none;
+    background: #b39696;
+    color: #411f2d;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 15px;
+  }
+}

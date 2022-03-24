@@ -1,6 +1,15 @@
-<div class="form-add">
-  <img src="./assets/img/chi-hang-xom.jpg" alt="avatar" />
-  <div class="input">What are you thinking? Nguyen?</div>
+<div class="form-add" (click)="onFormClick.emit()">
+  <div class="circle">
+    <img
+      *ngIf="user.photoUrl; else avatar"
+      [src]="user.photoUrl"
+      [alt]="user.displayName"
+    />
+    <ng-template #avatar>
+      <h1>{{ user.displayName.charAt(0) }}</h1>
+    </ng-template>
+  </div>
+  <div class="input">What are you thinking? {{ user.displayName }}?</div>
   <button mat-icon-button>
     <mat-icon class="material-icons-outlined">edit</mat-icon>
   </button>

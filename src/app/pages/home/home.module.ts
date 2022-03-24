@@ -6,6 +6,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostItemModule } from 'src/app/components/post-item/post-item.module';
 import { AddPostModule } from 'src/app/components/add-post/add-post.module';
 import { PostSkeletonModule } from 'src/app/components/post-skeleton/post-skeleton.module';
+import { PostFormModule } from 'src/app/components/post-form/post-form.module';
 
 @NgModule({
   declarations: [HomeComponent, PostDetailComponent],
@@ -15,6 +16,7 @@ import { PostSkeletonModule } from 'src/app/components/post-skeleton/post-skelet
     PostItemModule,
     AddPostModule,
     PostSkeletonModule,
+    PostFormModule,
   ],
 })
 export class HomeModule {}

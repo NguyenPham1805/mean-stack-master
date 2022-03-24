@@ -1,0 +1,124 @@
+@mixin box {
+  border: 1px solid #b8b8b879;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #00000079, -3px 0 5px #00000079;
+}
+
+@mixin flex($direction: row, $aic: center, $jtf: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $aic;
+  justify-content: $jtf;
+}
+
+@mixin avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.form-container {
+  padding: 10px;
+  position: fixed;
+  background: linear-gradient(-45deg, #0f071b, #051122);
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  width: 500px;
+  @include flex(column, center, center);
+  @include box();
+
+  .header {
+    width: 100%;
+    @include flex(row, stretch, space-between);
+
+    .circle {
+      @include avatar();
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #dadada;
+
+      img {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #cb0560;
+      }
+    }
+
+    .name {
+      height: 100%;
+      margin-left: 10px;
+      flex: 1;
+
+      h4 {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .body {
+    width: 100%;
+
+    & form {
+      padding-top: 10px;
+      width: 100%;
+
+      .input-title {
+        background: none;
+        border: none;
+        outline: none;
+        width: 100%;
+        margin-left: 5px;
+        font-size: 1rem;
+        padding: 5px;
+        line-height: 1.2rem;
+      }
+
+      .input-file {
+        display: none;
+      }
+
+      .preview-image {
+        margin: 5px 0 1rem 0;
+        cursor: pointer;
+        width: 100%;
+        max-height: 350px;
+        border-top: 1px solid #b8b8b879;
+        border-bottom: 1px solid #b8b8b879;
+        @include flex();
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .footer {
+    width: 100%;
+    padding: 0px 20px;
+    @include flex(row, stretch, flex-end);
+
+    button {
+      margin: 10px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #170b18ab;
+}

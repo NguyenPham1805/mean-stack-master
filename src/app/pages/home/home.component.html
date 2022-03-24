@@ -1,7 +1,26 @@
 <div class="container">
-  <eye-add-post></eye-add-post>
-  <!-- <eye-post-item></eye-post-item>
-  <eye-post-item></eye-post-item> -->
-  <eye-post-skeleton></eye-post-skeleton>
-  <eye-post-skeleton></eye-post-skeleton>
+  <eye-add-post
+    (form-click)="postFormDisplay = true"
+    [user]="(currentUser$ | async)!"
+  ></eye-add-post>
+  <ng-container *ngIf="posts$ | async; else postSkeleton">
+    <eye-post-item
+      *ngFor="let post of posts$ | async"
+      (delete-post)="handleDeletePost($event)"
+      (edit-post)="handleClickEdit($event)"
+      [post]="post"
+      [user]="(currentUser$ | async)!"
+    ></eye-post-item>
+  </ng-container>
+  <ng-template #postSkeleton>
+    <eye-post-skeleton></eye-post-skeleton>
+    <eye-post-skeleton></eye-post-skeleton>
+  </ng-template>
 </div>
+<eye-post-form
+  [currentUser]="(currentUser$ | async)!"
+  (onClose)="postFormDisplay = false"
+  (onRefetch)="getPosts()"
+  [post]="postEdit"
+  *ngIf="postFormDisplay"
+></eye-post-form>

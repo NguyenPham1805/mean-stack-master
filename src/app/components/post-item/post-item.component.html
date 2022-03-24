@@ -2,12 +2,23 @@
   <div class="header">
     <div class="user">
       <div class="user-wrapper">
-        <div class="avatar">
-          <img src="./assets/img/chi-hang-xom.jpg" alt="photoUrl" />
+        <div class="circle">
+          <img
+            *ngIf="post.userPhotoUrl; else avatar"
+            [src]="post.userPhotoUrl"
+            [alt]="post.displayName"
+          />
+          <ng-template #avatar>
+            <h1>{{ post.displayName.charAt(0) }}</h1>
+          </ng-template>
         </div>
         <div class="user-title">
-          <h4 class="display-name">Trung Nguyên</h4>
-          <span class="time-left">3 hour</span>
+          <h4 class="display-name">
+            {{ post.displayName || user.displayName }}
+          </h4>
+          <span class="time-left">
+            {{ post.createdAt | date: "hh:mm aa ccc" }}
+          </span>
         </div>
       </div>
       <div class="option">
@@ -15,6 +26,16 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #userOptionMenu="matMenu">
+          <ng-container *ngIf="user._id === post.userId">
+            <button (click)="onDeletePost.emit(post.postId)" mat-menu-item>
+              <mat-icon>delete_outline</mat-icon>
+              <span>Removed</span>
+            </button>
+            <button (click)="onEditPost.emit(post)" mat-menu-item>
+              <mat-icon>edit_note</mat-icon>
+              <span>Edit</span>
+            </button>
+          </ng-container>
           <button mat-menu-item>
             <mat-icon class="material-icons-outlined">turned_in_not</mat-icon>
             <span>Save post</span>
@@ -30,11 +51,11 @@
         </mat-menu>
       </div>
     </div>
-    <div class="title">Củ chuối</div>
+    <div class="title">{{ post.title }}</div>
   </div>
   <div class="body">
     <div class="content-text"></div>
-    <img src="./assets/img/leona.jpg" alt="test-post" />
+    <img [src]="postImageApiUrl + post.image" [alt]="post.title" />
   </div>
   <div class="footer">
     <button

@@ -11,6 +11,12 @@
   justify-content: $jtf;
 }
 
+@mixin avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
 .post-container {
   margin-top: 2rem;
   padding: 10px;
@@ -27,6 +33,26 @@
 
       & .user-wrapper {
         @include flex();
+
+        .circle {
+          @include avatar();
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #dadada;
+
+          img {
+            width: 100%;
+          }
+
+          h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #cb0560;
+          }
+        }
 
         & .avatar {
           @include flex();
