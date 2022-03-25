@@ -38,7 +38,7 @@ export class PostService {
   }
 
   public updatePost(accessToken: string, postId: string, postUpdate: any) {
-    return this.http.post(
+    return this.http.put(
       `${environment.eyebookApiUrl}/post/update/${postId}`,
       postUpdate,
       { headers: { Authorization: `Bearer ${accessToken}` } }

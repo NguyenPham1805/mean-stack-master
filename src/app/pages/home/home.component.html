@@ -8,8 +8,8 @@
       *ngFor="let post of posts$ | async"
       (delete-post)="handleDeletePost($event)"
       (edit-post)="handleClickEdit($event)"
-      [post]="post"
       [user]="(currentUser$ | async)!"
+      [post]="post"
     ></eye-post-item>
   </ng-container>
   <ng-template #postSkeleton>
@@ -19,7 +19,7 @@
 </div>
 <eye-post-form
   [currentUser]="(currentUser$ | async)!"
-  (onClose)="postFormDisplay = false"
+  (onClose)="handleCloseForm()"
   (onRefetch)="getPosts()"
   [post]="postEdit"
   *ngIf="postFormDisplay"

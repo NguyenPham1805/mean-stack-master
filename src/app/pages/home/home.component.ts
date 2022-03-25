@@ -54,4 +54,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       )
       .subscribe(() => this.getPosts());
   }
+
+  public handleCloseForm(): void {
+    this.postEdit = null;
+    this.postFormDisplay = false;
+  }
 }

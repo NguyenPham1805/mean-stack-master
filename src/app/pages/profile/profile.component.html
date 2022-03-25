@@ -20,7 +20,7 @@
 </div>
 <eye-post-form
   [currentUser]="(currentUser$ | async)!"
-  (onClose)="postFormDisplay = false"
+  (onClose)="handleCloseForm()"
   (onRefetch)="fetchPostsUser()"
   [post]="postEdit"
   *ngIf="postFormDisplay"

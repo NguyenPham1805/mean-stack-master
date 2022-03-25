@@ -2,7 +2,7 @@
   <div class="header">
     <div class="circle">
       <img
-        *ngIf="imageImageApiUrl + currentUser.photoUrl; else avatar"
+        *ngIf="currentUser.photoUrl; else avatar"
         [src]="imageImageApiUrl + currentUser.photoUrl"
         [alt]="currentUser.displayName"
       />
@@ -21,15 +21,14 @@
   </div>
   <div class="body">
     <form
-      (ngSubmit)="post ? onSubmit(postForm) : handleUpdatePost(postForm)"
+      (ngSubmit)="!post ? onSubmit(postForm) : handleUpdatePost(postForm)"
       #postForm="ngForm"
     >
       <input
         class="input-title"
         type="text"
         name="caption"
-        [value]="post?.title || ''"
-        ngModel
+        [ngModel]="post?.title || ''"
         placeholder="What's on your mind?"
         autocomplete="off"
         required="true"
@@ -37,13 +36,13 @@
       <input
         class="input-file"
         type="file"
-        name="image"
         ngModel
+        name="image"
         (change)="handleChageFile($event.target)"
         #fileUpload
       />
       <div class="preview-image" (click)="fileUpload.click()">
-        <img [src]="imageImageApiUrl + post?.image || defaulImg" />
+        <img [src]="defaulImg" />
       </div>
       <div class="footer">
         <button mat-raised-button (click)="onClose.emit()" type="button">

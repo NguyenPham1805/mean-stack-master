@@ -19,7 +19,6 @@ export class PostFormComponent implements OnInit {
   @Input() currentUser!: CurrentUser;
   @Input() post: Post | null = null;
 
-  @Output() onPostFormSubmit = new EventEmitter();
   @Output() onClose = new EventEmitter();
   @Output() onRefetch = new EventEmitter();
 
@@ -27,14 +26,13 @@ export class PostFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(form: NgForm) {
+  public onSubmit(form: NgForm) {
     const fd = new FormData();
     fd.append('title', form.value.caption);
     fd.append('postImage', this.fileToUpload);
     this.postService
       .createPost(this.currentUser.accessToken!, fd)
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe(() => {
         this.onClose.emit();
         this.onRefetch.emit();
       });
@@ -53,10 +51,11 @@ export class PostFormComponent implements OnInit {
     const fd = new FormData();
     fd.append('title', form.value.caption);
     fd.append('postImage', this.fileToUpload);
+    console.log(fd);
+    console.log(this.fileToUpload);
     this.postService
       .updatePost(this.currentUser?.accessToken!, this.post?.postId!, fd)
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe(() => {
         this.onClose.emit();
         this.onRefetch.emit();
       });

@@ -2,19 +2,21 @@
   <div class="header">
     <div class="user">
       <div class="user-wrapper">
-        <div class="circle">
+        <a class="circle" [routerLink]="['/profile', post.userId]">
           <img
             *ngIf="post.userPhotoUrl; else avatar"
             [src]="post.userPhotoUrl"
             [alt]="post.displayName"
           />
           <ng-template #avatar>
-            <h1>{{ post.displayName.charAt(0) }}</h1>
+            <h1>
+              {{ post.displayName.charAt(0) }}
+            </h1>
           </ng-template>
-        </div>
+        </a>
         <div class="user-title">
           <h4 class="display-name">
-            {{ post.displayName || user.displayName }}
+            {{ post.displayName }}
           </h4>
           <span class="time-left">
             {{ post.createdAt | date: "hh:mm aa ccc" }}

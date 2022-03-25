@@ -11,7 +11,7 @@
       </li>
       <li class="nav-item">
         <a
-          [routerLink]="['profile', 1]"
+          [routerLink]="['profile', currentUser?._id]"
           routerLinkActive="selected"
           class="nav-link"
         >
